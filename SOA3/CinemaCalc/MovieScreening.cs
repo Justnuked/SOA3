@@ -8,12 +8,17 @@ namespace CinemaCalc
 {
     public class MovieScreening
     {
+        private Movie movie;
         private DateTime dateAndTime;
         private double pricePerSeat;
 
-        public MovieScreening()
+        public MovieScreening(Movie movie, DateTime dateAndTime, double pricePerSeat)
         {
+            this.movie = movie;
+            movie.AddScreening(this);
 
+            this.dateAndTime = dateAndTime;
+            this.pricePerSeat = pricePerSeat;
         }
 
         public double GetPricePerSeat()
@@ -23,7 +28,7 @@ namespace CinemaCalc
 
         public override string ToString()
         {
-            return "0";
+            return movie.ToString() + " - " + dateAndTime;
         }
     }
 }

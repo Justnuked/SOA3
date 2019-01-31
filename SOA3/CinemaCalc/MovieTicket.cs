@@ -8,13 +8,18 @@ namespace CinemaCalc
 {
     public class MovieTicket
     {
+        private MovieScreening movieScreening;
+
         private int rowNr;
         private int seatNr;
         private bool isPremium;
 
-        public MovieTicket()
+        public MovieTicket(MovieScreening movieScreening, bool isPremium, int rowNr, int seatNr)
         {
-
+            this.movieScreening = movieScreening;
+            this.isPremium = isPremium;
+            this.rowNr = rowNr;
+            this.seatNr = seatNr;
         }
 
         public bool IsPremium()
@@ -24,12 +29,13 @@ namespace CinemaCalc
 
         public double GetPrice()
         {
-            return 0;
+            return movieScreening.GetPricePerSeat();
         }
 
         public override String ToString()
         {
-            return "0";
+            return movieScreening.ToString() + " - row " + rowNr + ", seat " + seatNr +
+                   (isPremium ? " (Premium)" : "");
         }
     }
 }

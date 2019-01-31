@@ -24,7 +24,7 @@ namespace CinemaCalc
 
         public override string ToString()
         {
-            return "0";
+            return title;
         }
     }
 }

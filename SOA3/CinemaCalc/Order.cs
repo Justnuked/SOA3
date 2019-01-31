@@ -11,10 +11,14 @@ namespace CinemaCalc
         private int orderNr;
         private bool isStudentOrder;
 
+        private List<MovieTicket> tickets;
+
         public Order(int orderNr, bool isStudentOrder)
         {
             this.orderNr = orderNr;
             this.isStudentOrder = isStudentOrder;
+            
+            tickets = new List<MovieTicket>();
         }
 
         public int GetOrderNumber()
@@ -22,9 +26,9 @@ namespace CinemaCalc
             return this.orderNr;
         }
 
-        public void AddSeatReservation()
+        public void AddSeatReservation(MovieTicket ticket)
         {
-
+            tickets.Add(ticket);
         }
 
         public double CalculatePrice()
