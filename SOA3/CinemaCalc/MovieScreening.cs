@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace CinemaCalc
 {
-    class MovieScreening
+    public class MovieScreening
     {
+        private DateTime dateAndTime;
+        private double pricePerSeat;
+
+        public MovieScreening()
+        {
+
+        }
+
+        public double GetPricePerSeat()
+        {
+            return this.pricePerSeat;
+        }
+
+        public override string ToString()
+        {
+            return "0";
+        }
     }
 }
