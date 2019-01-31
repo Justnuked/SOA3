@@ -33,7 +33,79 @@ namespace CinemaCalc
 
         public double CalculatePrice()
         {
-            return 0;
+            double totalPrice = 0.00;
+            double studentDiscountPercentage = 10; // Percentage might change
+            double groupDiscountPercentage = 10; // Percentage might change too.
+            bool secondTicketFree = false;
+            bool groupDiscount = false;
+
+            int ticketNumber = 0;
+            double ticketPrice = 0.00;
+
+            foreach (MovieTicket ticket in tickets)
+            {
+                ticketPrice = ticket.GetPrice();
+
+                // Keeping track of every ticket number to give free tickets on the second tickets.
+                ticketNumber++;
+
+
+                // Checking the day of the screening, applying free tickets where required
+                DayOfWeek dayOfScreening = ticket.GetScreening().GetDateTime().DayOfWeek;
+                if (dayOfScreening == DayOfWeek.Friday
+                    || dayOfScreening == DayOfWeek.Saturday
+                    || dayOfScreening == DayOfWeek.Sunday)
+                {
+                    if (isStudentOrder)
+                    {
+                        secondTicketFree = true;
+                    }
+                }
+                else
+                {
+                    secondTicketFree = true;
+                }
+
+                if (!isStudentOrder)
+                {
+                    if (tickets.Count >= 6)
+                    {
+                        groupDiscount = true;
+                    }
+                }
+
+                if (ticket.IsPremium())
+                {
+                    if (isStudentOrder)
+                    {
+                        ticketPrice += 2;
+                    }
+                    else
+                    {
+                        ticketPrice += 3;
+                    }
+                }
+
+                // Discount calculations
+                if (groupDiscount)
+                {
+                    ticketPrice = ticketNumber * (100 - groupDiscountPercentage);
+                }
+
+                if (isStudentOrder)
+                {
+                    ticketPrice = ticketPrice * (100 - studentDiscountPercentage);
+                }
+
+                if (secondTicketFree && ticketNumber % 2 == 0)
+                {
+                    ticketPrice = 0;
+                }
+
+                totalPrice += ticketPrice;
+            }
+
+            return totalPrice;
         }
 
         public void Export()
