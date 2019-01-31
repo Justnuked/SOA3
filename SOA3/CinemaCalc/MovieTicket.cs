@@ -37,6 +37,11 @@ namespace CinemaCalc
             return movieScreening.GetPricePerSeat();
         }
 
+        public MovieScreening GetScreening()
+        {
+            return this.movieScreening;
+        }
+
         public override String ToString()
         {
             return movieScreening.ToString() + " - row " + rowNr + ", seat " + seatNr +

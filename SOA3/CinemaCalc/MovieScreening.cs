@@ -32,6 +32,11 @@ namespace CinemaCalc
             return this.pricePerSeat;
         }
 
+        public DateTime GetDateTime()
+        {
+            return dateAndTime;
+        }
+
         public override string ToString()
         {
             return movie.ToString() + " - " + dateAndTime;
