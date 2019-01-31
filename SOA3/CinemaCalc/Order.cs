@@ -51,6 +51,10 @@ namespace CinemaCalc
                 // Keeping track of every ticket number to give free tickets on the second tickets.
                 ticketNumber++;
 
+                if (isStudentOrder)
+                {
+                    secondTicketFree = true;
+                }
 
                 // Checking the day of the screening, applying free tickets where required
                 DayOfWeek dayOfScreening = ticket.GetScreening().GetDateTime().DayOfWeek;
@@ -58,10 +62,7 @@ namespace CinemaCalc
                     || dayOfScreening == DayOfWeek.Saturday
                     || dayOfScreening == DayOfWeek.Sunday)
                 {
-                    if (isStudentOrder)
-                    {
-                        secondTicketFree = true;
-                    }
+
                 }
                 else
                 {
@@ -99,12 +100,10 @@ namespace CinemaCalc
                     ticketPrice = ticketPrice * ((100 - studentDiscountPercentage) /100);
                 }
 
-                if (secondTicketFree && ticketNumber % 2 == 0)
+                if (!(secondTicketFree && ticketNumber % 2 == 0))
                 {
-                    ticketPrice = 0;
+                    totalPrice += ticketPrice;
                 }
-
-                totalPrice += ticketPrice;
             }
 
             return totalPrice;
