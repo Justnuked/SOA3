@@ -17,5 +17,25 @@ namespace CinemaCalc
             this.isStudentOrder = isStudentOrder;
         }
 
+        public int GetOrderNumber()
+        {
+            return this.orderNr;
+        }
+
+        public void AddSeatReservation()
+        {
+
+        }
+
+        public double CalculatePrice()
+        {
+            return 0;
+        }
+
+        public void Export()
+        {
+
+        }
+
     }
 }
