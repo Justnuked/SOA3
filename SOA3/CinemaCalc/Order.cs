@@ -91,12 +91,12 @@ namespace CinemaCalc
                 // Discount calculations
                 if (groupDiscount)
                 {
-                    ticketPrice = ticketNumber * (100 - groupDiscountPercentage);
+                    ticketPrice = ticketPrice * ((100 - groupDiscountPercentage)/100);
                 }
 
                 if (isStudentOrder)
                 {
-                    ticketPrice = ticketPrice * (100 - studentDiscountPercentage);
+                    ticketPrice = ticketPrice * ((100 - studentDiscountPercentage) /100);
                 }
 
                 if (secondTicketFree && ticketNumber % 2 == 0)

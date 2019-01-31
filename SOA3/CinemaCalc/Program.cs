@@ -13,22 +13,22 @@ namespace CinemaCalc
         {
             Movie movie = new Movie("OwO");
 
-            MovieScreening movieScreening = new MovieScreening(movie, DateTime.Now, 10);
+            MovieScreening movieScreening = new MovieScreening(movie, DateTime.Now, 12);
 
-            Order o = new Order(1, false);
+            Order o = new Order(1, true);
 
-            MovieTicket ticket1 = new MovieTicket(movieScreening, false, 1, 1);
+            MovieTicket ticket1 = new MovieTicket(movieScreening, true, 1, 1);
             MovieTicket ticket2 = new MovieTicket(movieScreening, false, 2, 1);
             MovieTicket ticket3 = new MovieTicket(movieScreening, false, 3, 1);
             MovieTicket ticket4 = new MovieTicket(movieScreening, false, 4, 1);
 
             o.AddSeatReservation(ticket1);
-            o.AddSeatReservation(ticket2);
-            o.AddSeatReservation(ticket3);
-            o.AddSeatReservation(ticket4);
+            //o.AddSeatReservation(ticket2);
+            //o.AddSeatReservation(ticket3);
+            //o.AddSeatReservation(ticket4);
 
-            o.Export(TicketExportFormat.JSON);
-            Console.WriteLine("Exporting. . .");
+            Console.WriteLine(o.CalculatePrice());
+            
 
             Console.ReadKey();
         }
