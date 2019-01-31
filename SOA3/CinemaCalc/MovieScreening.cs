@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CinemaCalc
 {
     public class MovieScreening
     {
+        [JsonProperty]
         private Movie movie;
+
+        [JsonProperty]
         private DateTime dateAndTime;
+
+        [JsonProperty]
         private double pricePerSeat;
 
         public MovieScreening(Movie movie, DateTime dateAndTime, double pricePerSeat)

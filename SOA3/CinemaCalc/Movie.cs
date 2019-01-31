@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CinemaCalc
 {
     public class Movie
     {
+        [JsonProperty]
         private string title;
         private List<MovieScreening> screenings;
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CinemaCalc
 {
@@ -36,10 +38,32 @@ namespace CinemaCalc
             return 0;
         }
 
-        public void Export()
+        public void Export(TicketExportFormat format)
         {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
+            if (format == TicketExportFormat.PLAINTEXT)
+            {
+                using (TextWriter tw = new StreamWriter(path + @"\Order_" + orderNr + ".txt", false))
+                {
+                    foreach (MovieTicket ticket in tickets)
+                    {
+                        tw.WriteLine(ticket.ToString());
+                        tw.WriteLine();
+                    }
+                }
+            }
+
+            if (format == TicketExportFormat.JSON)
+            {
+                var json = JsonConvert.SerializeObject(tickets);
+
+                using (TextWriter tw = new StreamWriter(path + @"\Order_" + orderNr + ".json", false))
+                {
+                    tw.Write(json);
+                }
+
+            }
         }
-
     }
 }

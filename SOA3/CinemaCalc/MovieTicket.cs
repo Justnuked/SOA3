@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CinemaCalc
 {
     public class MovieTicket
     {
+        [JsonProperty]
         private MovieScreening movieScreening;
 
+        [JsonProperty]
         private int rowNr;
+        [JsonProperty]
         private int seatNr;
+        [JsonProperty]
         private bool isPremium;
 
         public MovieTicket(MovieScreening movieScreening, bool isPremium, int rowNr, int seatNr)
